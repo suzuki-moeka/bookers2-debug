@@ -3,8 +3,10 @@ class BooksController < ApplicationController
   before_action :ensure_current_user, only: [:edit, :update]
 
   def show
+    @books = Book.all
     @book = Book.find(params[:id])
     @book_new = Book.new
+    @user = @book.user
   end
 
   def index
@@ -37,9 +39,9 @@ class BooksController < ApplicationController
     end
   end
 
-  def destoy
+  def destroy
     @book = Book.find(params[:id])
-    @book.destoy
+    @book.destroy
     redirect_to books_path
   end
 
