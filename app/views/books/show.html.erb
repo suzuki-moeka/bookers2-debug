@@ -27,22 +27,11 @@
             <%= render 'favorites/favorite', book: @book %>
           </td>
           <td>コメント件数：<%= @book.book_comments.count %></td>
-             <% @book.book_comments.each do |book_comment| %>
         </tr>
-           <tr>
-             <td><%= image_tag book_comment.user.get_profile_image(50,50) %></td>
-             <td><%= book_comment.user.name %></td>
-             <td><%= book_comment.comment %></td>
-             <td><% if book_comment.user == current_user %>
-                <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment),remote: true, class: "btn btn-sm btn-danger", method: :delete %>
-                  <% end %>
-                 <% end %>
-              </td>
-            </tr>
-          </table>
-          <div id="comments-area">
-            <%= render "book_comments/comment",book: @book,book_comment: @book_comment %>
-          </div>
+      </table>
+        <div id="comments-area">
+          <%= render "book_comments/comment",book: @book,book_comment: @book_comment %>
+        </div>
     </div>
   </div>
 </div>
