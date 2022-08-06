@@ -10,10 +10,12 @@ class BooksController < ApplicationController
     @book_comment = BookComment.new
   end
 
-  
+
   def index
-    @books = Book.all
     @book = Book.new
+    to  = Time.current.at_end_of_day
+    from  = (to - 6.day).at_beginning_of_day
+    @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
   end
 
   def create
@@ -58,4 +60,5 @@ class BooksController < ApplicationController
     @user = @book.user
     redirect_to(books_path) unless @user == current_user
   end
+
 end
