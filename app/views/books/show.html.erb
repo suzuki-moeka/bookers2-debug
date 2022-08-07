@@ -27,6 +27,7 @@
             <%= render 'favorites/favorite', book: @book %>
           </td>
           <td>コメント件数：<%= @book.book_comments.count %></td>
+          <td class="view-count">閲覧数: <%= @book_detail.view_counts.count %></td>
         </tr>
       </table>
         <div id="comments-area">
