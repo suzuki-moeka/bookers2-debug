@@ -23,6 +23,7 @@
           <td><%= @group.name %></td>
           <td><%= @group.introduction %></td>
           <td><%= @group.users.count %></td>
+          <td><%= link_to 'Mail',group_new_mail_path(@group), class: "fas fa-paper-plane" %></td>
           <td>
             <% if @group.owner_id == current_user.id %>
               <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
