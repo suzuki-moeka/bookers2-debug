@@ -12,7 +12,12 @@ class BooksController < ApplicationController
     @user = @book.user
     @book_comment = BookComment.new
   end
-
+  
+  def join
+    @group = Group.find(params[:group_id])
+    @group.users << current_user
+    redirect_to  groups_path
+  end
 
   def index
     to  = Time.current.at_beginning_of_day
