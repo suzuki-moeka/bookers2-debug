@@ -10,7 +10,7 @@
       <h2>Group Detail</h2>
       <table class='table table-hover table-inverse'>
         <tr>
-          <td><%= attachment_image_tag(@group, :image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+          <td><%= image_tag @group.get_image, size: '50x50' %></td>
           <td><%= @group.name %></td>
           <td><%= @group.introduction %></td>
           <td>
